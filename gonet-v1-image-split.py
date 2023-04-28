@@ -10,14 +10,17 @@ from tifffile import tifffile
 from picamraw import PiRawBayer, PiCameraVersion
 import logging
 
-
+#*  **** Add in the GONet v1 Source Camera ****
 source_camera = "GONet058"
 
 logging.basicConfig(level=logging.WARN, filename='/tmp/gonet-split.log')
 source_image_bucket = "gonet"
 tiff_bucket = "gonet.split.tiff"
 jpeg_bucket = "gonet.split.jpeg"
+#* **** Use your local aws profile is running locally ****
 session = boto3.Session(profile_name='adler')
+#* **** Use this one if on an EC2 Instance or Sagemaker Notebook with IAM Role/Policy ****
+# session = boto3.Session()
 s3 = session.resource('s3')
 s3_client = session.client("s3")
 src_bucket = s3.Bucket(source_image_bucket)
