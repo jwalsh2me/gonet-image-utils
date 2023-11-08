@@ -13,15 +13,21 @@ import os
     This has been updated to run under Windows following the GONet Downloader Utility
     It will carry over the %USERPROFILE% and %folder% vars from the batch file
 
+    Use PyInstaller to package as an .EXE, make sure to install all modules with pip
+    https://pyinstaller.org/en/stable/index.html
+
+    This iteration only saves the TIFF, drops the JPEG
+
 """
 
 folder = os.environ.get('folder')
 userprofile = os.environ.get('USERPROFILE')
 print(f"Destination Folder is:: {folder}")
 
-out_dir = (f'{userprofile}\\{folder}\\tiffs\\')
+out_dir = (f'{userprofile}/Desktop/{folder}/tiffs/')
 # jpeg_out_dir = (f'{userprofile}\\{folder}\\jpegs\\')
-in_dir = (f'{userprofile}\\{folder}\\')
+# in_dir = (f'{userprofile}\\{folder}\\')
+in_dir = (f'{userprofile}/Desktop/{folder}/')
 
 
 ## Isolate the files to only those larger than 4MB
